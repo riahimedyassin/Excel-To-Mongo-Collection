@@ -2,13 +2,14 @@ const fs = require("fs-extra");
 const { uploadToDB } = require("../utils/UploadToDB");
 
 const { ExcelToJSON } = require("../utils/ExcelToJSON");
+const { getModel } = require("../utils/GetModel");
 
 const UploadController = async (req, res, next) => {
-  console.log(req.file);
   try {
     const data = ExcelToJSON(req.file);
+    // await getModel(req.file.path,"Feuille 1")
     if (data) {
-      await uploadToDB(data, "uk-500").then(() => {
+      await uploadToDB(data, "Feuille 1").then(() => {
         fs.remove(req.file.path);
       });
       return res.status(200).json({ data });
