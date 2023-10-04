@@ -7,7 +7,7 @@ const { getModel } = require("../utils/GetModel");
 const UploadController = async (req, res, next) => {
   try {
     const data = ExcelToJSON(req.file);
-    // await getModel(req.file.path,"Feuille 1")
+    await getModel(req.file.path,"Feuille 1","test")
     if (data) {
       await uploadToDB(data, "Feuille 1").then(() => {
         fs.remove(req.file.path);
