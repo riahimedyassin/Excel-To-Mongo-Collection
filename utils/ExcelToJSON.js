@@ -1,5 +1,4 @@
 const convert = require("convert-excel-to-json");
-
 const ExcelToJSON = (file) => {
   if (!file || file == "undefined") {
     return null;
