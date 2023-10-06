@@ -19,7 +19,7 @@ const start = async() => {
     } catch (error) {
         return console.log(error)
     }
-    app.listen(PORT,()=> {
+    app.listen(PORT, () => {
         console.log(`App running on port : ${PORT}`)
     })
 }
