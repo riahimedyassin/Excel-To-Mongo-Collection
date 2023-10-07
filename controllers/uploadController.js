@@ -6,9 +6,9 @@ const { ExcelToJSON } = require("../utils/ExcelToJSON");
 
 const UploadController = async (req, res, next) => {
   try {
-    const data = ExcelToJSON(req.file);
+    const data = ExcelToJSON(req.file,"Feuille 1");
     if (data) {
-      await uploadToDB(data, "Feuille 1").then(() => {
+      await uploadToDB(data).then(() => {
         fs.remove(req.file.path);
       });
       return res.status(200).json({ data });
